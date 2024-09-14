@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq5f8exrpe303"]
+
+[ext_resource type="PackedScene" uid="uid://c4e0gmrssvcex" path="res://levels/Level Template.tscn" id="1_xm0mr"]
+[ext_resource type="PackedScene" uid="uid://cjmli331lkdll" path="res://stationaries/rect_eraser.tscn" id="2_jmby5"]
+[ext_resource type="PackedScene" uid="uid://cl2p2jum077sl" path="res://stationaries/pencil.tscn" id="3_7143h"]
+
+[node name="LevelTemplate" instance=ExtResource("1_xm0mr")]
+
+[node name="RectEraser" parent="." index="3" instance=ExtResource("2_jmby5")]
+position = Vector2(81, -108)
+
+[node name="RectEraser2" parent="." index="4" instance=ExtResource("2_jmby5")]
+position = Vector2(-272, 34)
+
+[node name="Pencil" parent="." index="5" instance=ExtResource("3_7143h")]
+position = Vector2(28, 64)

@@ -83,9 +83,11 @@ func _enclosed(closure_point: Vector2):
 
 
 func _input(event: InputEvent) -> void:
+	if current_state == "slam":
+		return
 	var new_state: String = 'idle'
-	if Input.is_action_pressed("tilt"):
-		new_state = "tilt"
+	if Input.is_action_just_pressed("slam"):
+		new_state = "slam"
 		var target_global_pos = get_global_mouse_position()
 		tilt_dirn = (target_global_pos - global_position).normalized()
 	elif Input.is_action_pressed("doodle"):
@@ -103,9 +105,29 @@ func _physics_process(delta: float) -> void:
 		%Animator.play("RESET")
 		%Animator.advance(0)
 		%Animator.play(current_state)
+		if current_state == "doodle":
+			%Scribble.play(0)
+			%ScribbleParticle.set_emitting(true)
+		else:
+			%Scribble.stop()
+			%ScribbleParticle.set_emitting(false)
 		update_state = false
 	if current_state == "doodle":
 		var target_global_pos = get_global_mouse_position()
-		var direction = (target_global_pos - global_position).normalized()
-		velocity = direction * move_speed * delta
+		#var direction = (target_global_pos - global_position).normalized()
+		#velocity = direction * move_speed * delta
+		
+		var offset = target_global_pos - global_position
+		var direction = offset.normalized()
+		var mag = move_speed * delta
+		mag = min(mag, offset.length()*2)
+		velocity = direction * mag
+		
 		move_and_slide()
+
+func _slam():
+	Global.push_back.emit()
+	%SlamParticle.set_emitting(true)
+
+func set_to_idle():
+	current_state = "idle"

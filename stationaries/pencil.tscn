@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cl2p2jum077sl"]
+[gd_scene load_steps=11 format=3 uid="uid://cl2p2jum077sl"]
 
 [ext_resource type="Script" path="res://stationaries/pencil.gd" id="1_lee46"]
 [ext_resource type="Texture2D" uid="uid://hv3dmhrgwfvo" path="res://resources/Pencil.png" id="2_x80l5"]
+[ext_resource type="AudioStream" uid="uid://b4wcvnfhuttak" path="res://resources/scribble.mp3" id="3_2y3np"]
 
 [sub_resource type="Animation" id="Animation_pdb2p"]
 length = 0.001
@@ -28,6 +29,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -82)]
 }
 
 [sub_resource type="Animation" id="Animation_naar2"]
@@ -63,15 +76,52 @@ tracks/1/keys = {
 resource_name = "idle"
 loop_mode = 1
 
+[sub_resource type="Animation" id="Animation_4udph"]
+resource_name = "slam"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -82), Vector2(0, -102), Vector2(0, -102), Vector2(0, -82)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.666667, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_slam"
+}, {
+"args": [],
+"method": &"set_to_idle"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qvxh1"]
 _data = {
 "RESET": SubResource("Animation_pdb2p"),
 "doodle": SubResource("Animation_naar2"),
-"idle": SubResource("Animation_3jm3v")
+"idle": SubResource("Animation_3jm3v"),
+"slam": SubResource("Animation_4udph")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpj0j"]
 radius = 4.0
+
+[sub_resource type="Gradient" id="Gradient_d04bh"]
+offsets = PackedFloat32Array(0, 0.988848)
+colors = PackedColorArray(0, 0, 0, 1, 0.241156, 0.241156, 0.241156, 1)
 
 [node name="Pencil" type="CharacterBody2D"]
 motion_mode = 1
@@ -93,3 +143,40 @@ autoplay = "idle"
 shape = SubResource("CircleShape2D_cpj0j")
 disabled = true
 debug_color = Color(0, 0.165806, 0.199517, 0.42)
+
+[node name="Scribble" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_2y3np")
+
+[node name="ScribbleParticle" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 5
+lifetime = 0.5
+explosiveness = 0.2
+direction = Vector2(0, -1)
+gravity = Vector2(0, 200)
+initial_velocity_min = 40.0
+initial_velocity_max = 100.0
+angular_velocity_min = -60.0
+angular_velocity_max = 60.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_d04bh")
+
+[node name="SlamParticle" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 120.0
+linear_accel_min = -50.0
+linear_accel_max = -50.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color = Color(0.162066, 0.162066, 0.162066, 1)

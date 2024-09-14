@@ -4,8 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://b6rpu1mwy38dw" path="res://tiles/pixel.tscn" id="2_vd2g0"]
 [ext_resource type="PackedScene" uid="uid://cl2p2jum077sl" path="res://stationaries/pencil.tscn" id="2_x6kqw"]
 [ext_resource type="Script" path="res://pixel_layer.gd" id="3_gxxfq"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://cq2pat7mywope" path="res://game_overlay.tscn" id="6_5c7q7"]
 [ext_resource type="PackedScene" path="res://stationaries/rect_eraser.tscn" id="6_5u5ji"]
+=======
+[ext_resource type="PackedScene" uid="uid://cjmli331lkdll" path="res://stationaries/rect_eraser.tscn" id="6_5u5ji"]
+>>>>>>> 493a367d51dc73c63e7dc6ffe931e63bb2d9b844
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mb0ov"]
 size = Vector2(1152, 8)
@@ -13,7 +17,7 @@ size = Vector2(1152, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0x8g"]
 size = Vector2(8, 648)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6mptj"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_twmnn"]
 texture = ExtResource("1_ppdmv")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -22,14 +26,14 @@ texture = ExtResource("1_ppdmv")
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_310nh"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_u07lw"]
 scenes/1/scene = ExtResource("2_vd2g0")
 
 [sub_resource type="TileSet" id="TileSet_6f3sc"]
 tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_6mptj")
-sources/2 = SubResource("TileSetScenesCollectionSource_310nh")
+sources/0 = SubResource("TileSetAtlasSource_twmnn")
+sources/2 = SubResource("TileSetScenesCollectionSource_u07lw")
 
 [node name="Root" type="Node2D"]
 
@@ -65,9 +69,6 @@ tile_map_data = PackedByteArray("AADc//X/AgAAAAAAAQDc//b/AgAAAAAAAQDc//f/AgAAAAA
 tile_set = SubResource("TileSet_6f3sc")
 script = ExtResource("3_gxxfq")
 
-[node name="Pencil" parent="." instance=ExtResource("2_x6kqw")]
-position = Vector2(8, 19)
-
 [node name="RectEraser" parent="." instance=ExtResource("6_5u5ji")]
 position = Vector2(-195, -33)
 
@@ -75,3 +76,5 @@ position = Vector2(-195, -33)
 position = Vector2(286, 100)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+[node name="Pencil" parent="." instance=ExtResource("2_x6kqw")]
+position = Vector2(8, 19)

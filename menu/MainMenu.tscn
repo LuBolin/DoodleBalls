@@ -1,0 +1,174 @@
+[gd_scene load_steps=10 format=3 uid="uid://coki5iayjv6iv"]
+
+[ext_resource type="Script" path="res://menu/MainMenu.gd" id="1_7b31x"]
+[ext_resource type="PackedScene" uid="uid://b6n4hxxhf1588" path="res://levels/Level 1.tscn" id="2_fhsqw"]
+[ext_resource type="PackedScene" uid="uid://xjkpkaaraoa5" path="res://levels/Level 2.tscn" id="3_0bi4w"]
+[ext_resource type="PackedScene" uid="uid://bq5f8exrpe303" path="res://levels/Level 3.tscn" id="4_ie2o5"]
+[ext_resource type="Texture2D" uid="uid://daedo42msc6y0" path="res://resources/backdrop.png" id="5_r7c6q"]
+
+[sub_resource type="Animation" id="Animation_ysx83"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_ge4pr"]
+resource_name = "init_fade"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BgModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainModulate:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5m8e3"]
+_data = {
+"RESET": SubResource("Animation_ysx83"),
+"init_fade": SubResource("Animation_ge4pr")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6r3u"]
+
+[node name="MainScreen" type="Node2D"]
+script = ExtResource("1_7b31x")
+lvl_1 = ExtResource("2_fhsqw")
+lvl_2 = ExtResource("3_0bi4w")
+lvl_3 = ExtResource("4_ie2o5")
+
+[node name="BgModulate" type="CanvasModulate" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../MainMenu")
+libraries = {
+"": SubResource("AnimationLibrary_5m8e3")
+}
+autoplay = "init_fade"
+speed_scale = 0.5
+
+[node name="MainMenu" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="MainMenu"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="MainMenu/Control"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_s6r3u")
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 0
+offset_left = -61.0
+offset_top = -25.0
+offset_right = 1219.0
+offset_bottom = 695.0
+texture = ExtResource("5_r7c6q")
+expand_mode = 1
+
+[node name="MainModulate" type="CanvasModulate" parent="MainMenu"]
+
+[node name="Title_EN" type="Label" parent="MainMenu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -397.5
+offset_right = 397.5
+offset_bottom = 151.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 30
+theme_override_font_sizes/font_size = 128
+text = "Doodle Days"
+horizontal_alignment = 1
+
+[node name="author" type="Label" parent="MainMenu"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -57.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.866667, 0.866667, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 30
+theme_override_font_sizes/font_size = 48
+text = "Team 45 Inches "
+
+[node name="LevelButtons" type="GridContainer" parent="MainMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 72.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="TutorialButton" type="Button" parent="MainMenu/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Tutorial"
+
+[node name="ClearBeatenButton" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Reset Beaten Levels"
+
+[node name="Logo" type="TextureRect" parent="MainMenu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -228.0
+offset_right = -48.0001
+offset_bottom = 120.0
+grow_horizontal = 2
+scale = Vector2(2.57108, 2.57108)
+size_flags_horizontal = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="edges for help in render" type="Line2D" parent="."]
+points = PackedVector2Array(-576, 324, 576, 324, 576, -324, -576, -324)
+closed = true
+default_color = Color(0, 0.392157, 0.392157, 1)
+
+[connection signal="pressed" from="MainMenu/VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/ClearBeatenButton" to="." method="_on_clear_beaten_button_pressed"]
