@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cq2pat7mywope"]
+[gd_scene load_steps=9 format=3 uid="uid://dw3aubb80mgr8"]
 
 [ext_resource type="Texture2D" uid="uid://chqhh8lxd1hax" path="res://Progress2.png" id="1_i6igo"]
 [ext_resource type="Script" path="res://texture_progress_bar.gd" id="2_tpnow"]
@@ -62,6 +62,15 @@ fill_mode = 4
 texture_progress = ExtResource("4_2uqnw")
 script = ExtResource("5_otdef")
 
+[node name="Label" type="Label" parent="HBoxContainer/Dash"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -48.0
+offset_right = 115.0
+offset_bottom = -3.0
+theme_override_font_sizes/font_size = 32
+text = "Space"
+
 [node name="Slam" type="TextureProgressBar" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
@@ -69,3 +78,12 @@ value = 42.0
 fill_mode = 4
 texture_progress = ExtResource("6_y1yqx")
 script = ExtResource("6_c5kh1")
+
+[node name="Label2" type="Label" parent="HBoxContainer/Slam"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -49.0
+offset_right = 166.0
+offset_bottom = -4.0
+theme_override_font_sizes/font_size = 32
+text = "Right Click"

@@ -69,6 +69,7 @@ func _on_body_shape_entered(
 
 func _on_area_entered(area: Area2D):
 	if area.name == "PencilFill":
-		state = STATE.BLACK
-		Global.squares_shaded += 1
+		if state != STATE.BLACK:
+			state = STATE.BLACK
+			Global.squares_shaded += 1
 		#area.call_deferred("queue_free")

@@ -13,7 +13,7 @@ var pixel_layer: PixelLayer = null
 
 var squares_shaded = 0
 var total_squares = 0.0
-const WIN_THRESHOLD = 0.62 #percentage hold
+const WIN_THRESHOLD = 0.50 #percentage hold
 const WIN_TIME = 3
 var win_timer = WIN_TIME # seconds hold to win
 
@@ -56,6 +56,7 @@ func _process(delta):
 	dash_cd -= delta
 	slam_cd -= delta
 	if (not total_squares == 0):
+		print(float(squares_shaded) / total_squares," ",WIN_THRESHOLD)
 		if (float(squares_shaded) / total_squares > WIN_THRESHOLD):
 			win_timer -= delta
 		else:
