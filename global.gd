@@ -1,5 +1,11 @@
 extends Node
 
+signal line_erased
+signal enclosed(value: Vector2)
+
+var pencil: Pencil = null
+var pixel_layer: PixelLayer = null
+
 func _ready() -> void:
 	add_input_mouse("doodle", MOUSE_BUTTON_LEFT)
 	add_input_mouse("tilt", MOUSE_BUTTON_RIGHT)

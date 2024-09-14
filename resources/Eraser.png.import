@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3f375rsfvv3g"
-path="res://.godot/imported/plain_tilesheet.png-9e579d1ddf2d5cf0d9d3351346bbb48e.ctex"
+uid="uid://do4dabux8l4ms"
+path="res://.godot/imported/Eraser.png-99e9f07e3065a1e1a10cb511daef3c35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://plain_tilesheet.png"
-dest_files=["res://.godot/imported/plain_tilesheet.png-9e579d1ddf2d5cf0d9d3351346bbb48e.ctex"]
+source_file="res://resources/Eraser.png"
+dest_files=["res://.godot/imported/Eraser.png-99e9f07e3065a1e1a10cb511daef3c35.ctex"]
 
 [params]
 
