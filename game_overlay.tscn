@@ -1,12 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cq2pat7mywope"]
+[gd_scene load_steps=9 format=3 uid="uid://cq2pat7mywope"]
 
 [ext_resource type="Texture2D" uid="uid://chqhh8lxd1hax" path="res://Progress2.png" id="1_i6igo"]
 [ext_resource type="Script" path="res://texture_progress_bar.gd" id="2_tpnow"]
 [ext_resource type="Texture2D" uid="uid://mcpypq6alkbb" path="res://Progress1.png" id="3_ffr0x"]
-[ext_resource type="Texture2D" uid="uid://wdun272t730j" path="res://circle_noun_001_02738.jpg" id="4_qrkbx"]
+[ext_resource type="Texture2D" uid="uid://bkcynec6tfrxr" path="res://Dash.png" id="4_2uqnw"]
 [ext_resource type="Script" path="res://sample_abilities.gd" id="5_otdef"]
+[ext_resource type="Script" path="res://cooldown_2.gd" id="6_c5kh1"]
+[ext_resource type="Texture2D" uid="uid://cch2oaq4s06hs" path="res://Slam.png" id="6_y1yqx"]
 
 [sub_resource type="SystemFont" id="SystemFont_mgs3p"]
+subpixel_positioning = 0
 
 [node name="GameOverlay" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -51,15 +54,18 @@ layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_mgs3p")
 theme_override_font_sizes/font_size = 60
 
-[node name="Cooldown1" type="TextureProgressBar" parent="HBoxContainer"]
+[node name="Dash" type="TextureProgressBar" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 value = 24.0
 fill_mode = 4
-texture_progress = ExtResource("4_qrkbx")
+texture_progress = ExtResource("4_2uqnw")
 script = ExtResource("5_otdef")
 
-[node name="Cooldown2" type="TextureProgressBar" parent="HBoxContainer"]
+[node name="Slam" type="TextureProgressBar" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 value = 42.0
 fill_mode = 4
-texture_progress = ExtResource("4_qrkbx")
+texture_progress = ExtResource("6_y1yqx")
+script = ExtResource("6_c5kh1")

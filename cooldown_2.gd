@@ -8,4 +8,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	value = (1 - float(Global.dash_cd) / Global.DASH_COOLDOWN) * 100
+	value = (1 - float(Global.slam_cd) / Global.SLAM_COOLDOWN) * 100

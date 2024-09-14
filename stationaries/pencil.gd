@@ -5,6 +5,9 @@ var move_speed: float = 15000
 var doodling: bool = false
 var tilting: bool = false
 
+var dashing = 0
+var dashing_distance = 0.1
+
 var tilt_dirn: Vector2 = Vector2.ZERO
 
 var current_state: String
@@ -87,9 +90,15 @@ func _input(event: InputEvent) -> void:
 		return
 	var new_state: String = 'idle'
 	if Input.is_action_just_pressed("slam"):
-		new_state = "slam"
-		var target_global_pos = get_global_mouse_position()
-		tilt_dirn = (target_global_pos - global_position).normalized()
+		if Global.slam_cd <= 0:
+			Global.slam_cd = Global.SLAM_COOLDOWN
+			new_state = "slam"
+			var target_global_pos = get_global_mouse_position()
+			tilt_dirn = (target_global_pos - global_position).normalized()
+	elif Input.is_action_pressed("dash"):
+		if Global.dash_cd <= 0:
+			Global.dash_cd = Global.DASH_COOLDOWN
+			dashing = dashing_distance
 	elif Input.is_action_pressed("doodle"):
 		new_state = "doodle"
 	
@@ -122,6 +131,10 @@ func _physics_process(delta: float) -> void:
 		var mag = move_speed * delta
 		mag = min(mag, offset.length()*2)
 		velocity = direction * mag
+		
+		if dashing > 0:
+			dashing -= delta
+			velocity = velocity * 5
 		
 		move_and_slide()
 
