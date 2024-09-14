@@ -14,7 +14,7 @@ unique_name_in_owner = true
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_kei5x")
 region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
+region_rect = Rect2(0, 16, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_61i1i")

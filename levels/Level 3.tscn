@@ -1,16 +1,92 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq5f8exrpe303"]
+[gd_scene load_steps=10 format=3 uid="uid://bq5f8exrpe303"]
 
 [ext_resource type="PackedScene" uid="uid://c4e0gmrssvcex" path="res://levels/Level Template.tscn" id="1_xm0mr"]
 [ext_resource type="PackedScene" uid="uid://cjmli331lkdll" path="res://stationaries/rect_eraser.tscn" id="2_jmby5"]
 [ext_resource type="PackedScene" uid="uid://cl2p2jum077sl" path="res://stationaries/pencil.tscn" id="3_7143h"]
+[ext_resource type="Texture2D" uid="uid://bn3cjoadsljmo" path="res://resources/Map3.png" id="4_7n36g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhls2"]
+size = Vector2(279.5, 17.6078)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qyv4s"]
+size = Vector2(405, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtcio"]
+size = Vector2(20, 356.554)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxk41"]
+size = Vector2(19.2194, 358.533)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blefg"]
+size = Vector2(21.2514, 280.169)
 
 [node name="LevelTemplate" instance=ExtResource("1_xm0mr")]
 
-[node name="RectEraser" parent="." index="3" instance=ExtResource("2_jmby5")]
-position = Vector2(81, -108)
+[node name="Background" type="Sprite2D" parent="." index="1"]
+position = Vector2(0, -25)
+scale = Vector2(0.8, 0.52)
+texture = ExtResource("4_7n36g")
 
-[node name="RectEraser2" parent="." index="4" instance=ExtResource("2_jmby5")]
-position = Vector2(-272, 34)
+[node name="RectEraser" parent="." index="4" instance=ExtResource("2_jmby5")]
+position = Vector2(119, 97)
 
-[node name="Pencil" parent="." index="5" instance=ExtResource("3_7143h")]
+[node name="RectEraser2" parent="." index="5" instance=ExtResource("2_jmby5")]
+position = Vector2(-158, -41)
+
+[node name="Pencil" parent="." index="6" instance=ExtResource("3_7143h")]
 position = Vector2(28, 64)
+
+[node name="TilemapLayers" parent="." index="7"]
+visible = false
+
+[node name="Edge" type="StaticBody2D" parent="." index="8"]
+position = Vector2(0, -25)
+scale = Vector2(0.8, 0.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edge" index="0"]
+position = Vector2(55, -207)
+rotation = 1.10426
+shape = SubResource("RectangleShape2D_hhls2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Edge" index="1"]
+position = Vector2(-80, -208)
+rotation = -1.10479
+shape = SubResource("RectangleShape2D_hhls2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Edge" index="2"]
+position = Vector2(-338, -89)
+shape = SubResource("RectangleShape2D_qyv4s")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Edge" index="3"]
+position = Vector2(313, -88)
+shape = SubResource("RectangleShape2D_qyv4s")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Edge" index="4"]
+position = Vector2(-375.977, 5.38914)
+rotation = -1.12685
+shape = SubResource("RectangleShape2D_vtcio")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Edge" index="5"]
+position = Vector2(-169.334, 250.899)
+rotation = 1.12467
+shape = SubResource("RectangleShape2D_uxk41")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Edge" index="6"]
+position = Vector2(-283.22, 194.215)
+rotation = 0.468544
+shape = SubResource("RectangleShape2D_blefg")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Edge" index="7"]
+position = Vector2(352, 5.00001)
+rotation = -2.01649
+shape = SubResource("RectangleShape2D_vtcio")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Edge" index="8"]
+position = Vector2(145, 252)
+rotation = -1.12607
+shape = SubResource("RectangleShape2D_uxk41")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Edge" index="9"]
+position = Vector2(258, 193)
+rotation = -0.462257
+shape = SubResource("RectangleShape2D_blefg")
