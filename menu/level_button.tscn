@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://6ppns521hfaq"]
 
-[ext_resource type="Texture2D" uid="uid://hv3dmhrgwfvo" path="res://resources/Pencil.png" id="1_dwxv3"]
+[ext_resource type="Texture2D" uid="uid://cficebxlg3mtv" path="res://resources/BigPencil.png" id="1_7b5tt"]
 [ext_resource type="Texture2D" uid="uid://d0lwv1p0ovrbo" path="res://resources/red_tick.png" id="2_j38lb"]
 
 [node name="LevelButton" type="Button"]
@@ -18,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 text = "1"
-icon = ExtResource("1_dwxv3")
+icon = ExtResource("1_7b5tt")
 icon_alignment = 2
 expand_icon = true
 

@@ -11,6 +11,9 @@ func _ready() -> void:
 	var result = level_num_regex.search(level_scene_file_path)
 	if result: # should always be true
 		level_num = int(result.get_string(1))
+	
+	await get_tree().process_frame
+	print(Global.total_squares)
 
 func win():
 	Global.levelsBeaten.append(level_num)
@@ -22,3 +25,5 @@ func win():
 func to_menu():
 	var main_menu: PackedScene = load("res://menu/MainMenu.tscn")
 	get_tree().change_scene_to_packed(main_menu)
+	Global.squares_shaded = 0
+	Global.total_squares = 0

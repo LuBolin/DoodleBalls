@@ -39,6 +39,8 @@ func init_levels():
 			#levels.append([lvl_num, lvl_scene])
 
 func gotoLevel(lvl_scene):
+	Global.total_squares = 0
+	Global.squares_shaded = 0
 	get_tree().change_scene_to_packed(lvl_scene)
 
 func renderBeaten():

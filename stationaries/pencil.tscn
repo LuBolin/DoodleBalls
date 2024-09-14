@@ -1,8 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cl2p2jum077sl"]
+[gd_scene load_steps=15 format=3 uid="uid://cl2p2jum077sl"]
 
 [ext_resource type="Script" path="res://stationaries/pencil.gd" id="1_lee46"]
 [ext_resource type="Texture2D" uid="uid://hv3dmhrgwfvo" path="res://resources/Pencil.png" id="2_x80l5"]
 [ext_resource type="AudioStream" uid="uid://b4wcvnfhuttak" path="res://resources/scribble.mp3" id="3_2y3np"]
+[ext_resource type="Texture2D" uid="uid://br8if1oalcqfi" path="res://resources/ezgif-1-21ea61f166-png-560x560-sprite-png/tile000.png" id="3_6412q"]
+[ext_resource type="Texture2D" uid="uid://bwj3raac42uwb" path="res://resources/ezgif-1-21ea61f166-png-560x560-sprite-png/tile001.png" id="4_vntq0"]
+[ext_resource type="Texture2D" uid="uid://yavr1avog2mu" path="res://resources/ezgif-1-21ea61f166-png-560x560-sprite-png/tile002.png" id="5_7rth5"]
+[ext_resource type="Texture2D" uid="uid://cbjcojxmg0xnc" path="res://resources/ezgif-1-21ea61f166-png-560x560-sprite-png/tile003.png" id="6_0qbo5"]
 
 [sub_resource type="Animation" id="Animation_pdb2p"]
 length = 0.001
@@ -90,6 +94,8 @@ loop_mode = 1
 
 [sub_resource type="Animation" id="Animation_4udph"]
 resource_name = "slam"
+length = 0.4
+step = 0.042
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -97,10 +103,10 @@ tracks/0/path = NodePath("Sprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333, 0.666667, 0.766667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -82), Vector2(0, -102), Vector2(0, -102), Vector2(0, -82)]
+"values": [Vector2(-5, -40)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -109,7 +115,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.666667, 1),
+"times": PackedFloat32Array(0.208333, 0.375),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -118,6 +124,18 @@ tracks/1/keys = {
 "args": [],
 "method": &"set_to_idle"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.208333, 0.291667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_6412q"), ExtResource("4_vntq0"), ExtResource("5_7rth5"), ExtResource("6_0qbo5")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qvxh1"]
@@ -141,7 +159,7 @@ script = ExtResource("1_lee46")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -82)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_x80l5")
 
 [node name="Animator" type="AnimationPlayer" parent="."]

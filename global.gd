@@ -13,7 +13,7 @@ var pixel_layer: PixelLayer = null
 
 var squares_shaded = 0
 var total_squares = 0.0
-const WIN_THRESHOLD = 0.72 #percentage hold
+const WIN_THRESHOLD = 0.62 #percentage hold
 const WIN_TIME = 3
 var win_timer = WIN_TIME # seconds hold to win
 
@@ -51,7 +51,7 @@ func add_input_mouse(input_name: String, input_mouse: MouseButton):
 	event_space.button_index = input_mouse
 	InputMap.action_add_event(input_name, event_space)
 	
-
+var emitted = false
 func _process(delta):
 	dash_cd -= delta
 	slam_cd -= delta
@@ -60,8 +60,9 @@ func _process(delta):
 			win_timer -= delta
 		else:
 			win_timer = WIN_TIME
-		if win_timer < 0:
-			print("you win!")
+		if win_timer < 0 and not emitted:
+			Global.win.emit()
+			emitted = true
 	
 
 
@@ -86,6 +87,5 @@ func _input(event):
 		KEY_R:
 			restart.emit()
 		KEY_ESCAPE:
-			escape.emit()
-		KEY_L:
-			Global.win.emit()
+			var main_menu: PackedScene = load("res://menu/MainMenu.tscn")
+			get_tree().change_scene_to_packed(main_menu)

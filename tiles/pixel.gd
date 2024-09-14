@@ -20,6 +20,8 @@ func _ready() -> void:
 	body_shape_entered.connect(_on_body_shape_entered)
 	area_entered.connect(_on_area_entered)
 	Global.line_erased.connect(erase)
+
+func _enter_tree() -> void:
 	Global.total_squares += 1
 
 # only via gray propagation
