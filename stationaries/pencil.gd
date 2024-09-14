@@ -15,7 +15,7 @@ var trail_buffer = []
 
 func _ready() -> void:
 	self.global_position = Vector2.ZERO
-	assert(Global.pencil == null)
+	# assert(Global.pencil == null)
 	Global.pencil = self
 	
 	Global.line_erased.connect(_erased)
@@ -49,17 +49,9 @@ func consolidate():
 	trail.append(closest_point)
 	
 	trail_buffer.clear()
-	
-	#var pix_layer = Global.pixel_layer
-	#var self_in_pix_coords = pix_layer.local_to_map(
-		#pix_layer.to_local(self.global_position))
-	#var pen_in_pix_coords = pix_layer.local_to_map(
-		#pix_layer.to_local(closest_point))
-	#if self_in_pix_coords == pen_in_pix_coords:
-		#Global.enclosed.emit(closest_point)
 
 func _enclosed(closure_point: Vector2):
-	if len(trail) < 3:
+	if len(trail) < 4:
 		return
 	var vertices = trail.duplicate()
 	var closure_index = vertices.find(closure_point)
@@ -80,7 +72,6 @@ func _enclosed(closure_point: Vector2):
 	get_tree().create_timer(1).timeout.connect(
 		area.queue_free
 	)
-
 
 func _input(event: InputEvent) -> void:
 	if current_state == "slam":

@@ -28,6 +28,8 @@ func _ready() -> void:
 	squares_shaded = 0
 	total_squares = 0
 	add_input_mouse("slam", MOUSE_BUTTON_RIGHT)
+	#await get_tree().get_frame()
+	#print(pixel_array)
 
 func add_input_key(input_name: String, input_key: Key):
 	InputMap.add_action(input_name)

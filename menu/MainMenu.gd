@@ -22,7 +22,6 @@ func _ready():
 		lvl_button.pressed.connect(func x(): gotoLevel(lvl_scene))
 	self.renderBeaten()
 	main_canvas.show()
-	print("Test")
 
 # auto_loading breaks on html5 export
 # for the sake of game jam

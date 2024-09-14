@@ -1,12 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6n4hxxhf1588"]
+[gd_scene load_steps=5 format=3 uid="uid://b6n4hxxhf1588"]
 
 [ext_resource type="PackedScene" uid="uid://c4e0gmrssvcex" path="res://levels/Level Template.tscn" id="1_td0t7"]
+[ext_resource type="Texture2D" uid="uid://djt4pvmplhkvu" path="res://resources/Map1.png" id="2_3hbcl"]
 [ext_resource type="PackedScene" uid="uid://cl2p2jum077sl" path="res://stationaries/pencil.tscn" id="2_jrwjs"]
 [ext_resource type="PackedScene" uid="uid://cjmli331lkdll" path="res://stationaries/rect_eraser.tscn" id="3_ibmhh"]
 
 [node name="LevelTemplate" instance=ExtResource("1_td0t7")]
 
-[node name="Pencil" parent="." index="3" instance=ExtResource("2_jrwjs")]
+[node name="Background" type="Sprite2D" parent="." index="0"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_3hbcl")
 
-[node name="RectEraser" parent="." index="4" instance=ExtResource("3_ibmhh")]
+[node name="Pencil" parent="." index="4" instance=ExtResource("2_jrwjs")]
+
+[node name="RectEraser" parent="." index="5" instance=ExtResource("3_ibmhh")]
 position = Vector2(-255, -96)

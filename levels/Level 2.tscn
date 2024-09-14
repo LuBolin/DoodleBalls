@@ -1,16 +1,52 @@
-[gd_scene load_steps=4 format=3 uid="uid://xjkpkaaraoa5"]
+[gd_scene load_steps=6 format=3 uid="uid://xjkpkaaraoa5"]
 
 [ext_resource type="PackedScene" uid="uid://c4e0gmrssvcex" path="res://levels/Level Template.tscn" id="1_c0fel"]
+[ext_resource type="Texture2D" uid="uid://2b58ae5dkb0m" path="res://resources/Map2.png" id="2_1g8eo"]
 [ext_resource type="PackedScene" uid="uid://cjmli331lkdll" path="res://stationaries/rect_eraser.tscn" id="2_3ettr"]
 [ext_resource type="PackedScene" uid="uid://cl2p2jum077sl" path="res://stationaries/pencil.tscn" id="3_uh7it"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlglg"]
+size = Vector2(25.0193, 511.051)
+
 [node name="LevelTemplate" instance=ExtResource("1_c0fel")]
 
-[node name="RectEraser" parent="." index="3" instance=ExtResource("2_3ettr")]
-position = Vector2(-169, 221)
+[node name="Background" type="Sprite2D" parent="." index="1"]
+position = Vector2(1, -38)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("2_1g8eo")
 
-[node name="RectEraser2" parent="." index="4" instance=ExtResource("2_3ettr")]
+[node name="CollisionShape2D" parent="Boundaries/StaticBody2D" index="0"]
+position = Vector2(0, 231)
+
+[node name="CollisionShape2D2" parent="Boundaries/StaticBody2D" index="1"]
+position = Vector2(0, -312)
+
+[node name="CollisionShape2D3" parent="Boundaries/StaticBody2D" index="2"]
+position = Vector2(-490, -5)
+
+[node name="CollisionShape2D4" parent="Boundaries/StaticBody2D" index="3"]
+position = Vector2(491, -1)
+
+[node name="RectEraser" parent="." index="4" instance=ExtResource("2_3ettr")]
+position = Vector2(266, 104)
+
+[node name="RectEraser2" parent="." index="5" instance=ExtResource("2_3ettr")]
 position = Vector2(-366, -167)
 
-[node name="Pencil" parent="." index="5" instance=ExtResource("3_uh7it")]
+[node name="Pencil" parent="." index="6" instance=ExtResource("3_uh7it")]
 position = Vector2(21, 14)
+
+[node name="TilemapLayers" parent="." index="7"]
+visible = false
+
+[node name="Edge" type="StaticBody2D" parent="." index="8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edge" index="0"]
+position = Vector2(-334, 117)
+rotation = -0.806342
+shape = SubResource("RectangleShape2D_xlglg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Edge" index="1"]
+position = Vector2(349, -167)
+rotation = -0.806342
+shape = SubResource("RectangleShape2D_xlglg")
