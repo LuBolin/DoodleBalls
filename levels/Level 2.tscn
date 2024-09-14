@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xlglg"]
 size = Vector2(25.0193, 511.051)
 
-[node name="LevelTemplate" instance=ExtResource("1_c0fel")]
+[node name="LevelTemplate2" instance=ExtResource("1_c0fel")]
 
 [node name="Background" type="Sprite2D" parent="." index="1"]
 position = Vector2(1, -38)
@@ -27,19 +27,10 @@ position = Vector2(-490, -5)
 [node name="CollisionShape2D4" parent="Boundaries/StaticBody2D" index="3"]
 position = Vector2(491, -1)
 
-[node name="RectEraser" parent="." index="4" instance=ExtResource("2_3ettr")]
-position = Vector2(266, 104)
-
-[node name="RectEraser2" parent="." index="5" instance=ExtResource("2_3ettr")]
-position = Vector2(-366, -167)
-
-[node name="Pencil" parent="." index="6" instance=ExtResource("3_uh7it")]
-position = Vector2(21, 14)
-
-[node name="TilemapLayers" parent="." index="7"]
+[node name="TilemapLayers" parent="." index="4"]
 visible = false
 
-[node name="Edge" type="StaticBody2D" parent="." index="8"]
+[node name="Edge" type="StaticBody2D" parent="." index="5"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Edge" index="0"]
 position = Vector2(-334, 117)
@@ -50,3 +41,12 @@ shape = SubResource("RectangleShape2D_xlglg")
 position = Vector2(349, -167)
 rotation = -0.806342
 shape = SubResource("RectangleShape2D_xlglg")
+
+[node name="RectEraser" parent="." index="8" instance=ExtResource("2_3ettr")]
+position = Vector2(266, 104)
+
+[node name="RectEraser2" parent="." index="9" instance=ExtResource("2_3ettr")]
+position = Vector2(-366, -167)
+
+[node name="Pencil" parent="." index="10" instance=ExtResource("3_uh7it")]
+position = Vector2(21, 14)

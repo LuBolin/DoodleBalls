@@ -9,10 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://dw3aubb80mgr8" path="res://game_overlay.tscn" id="6_argi2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tx42s"]
-size = Vector2(1152, 8)
+size = Vector2(1152, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acmyc"]
-size = Vector2(8, 648)
+size = Vector2(91, 648)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x7hsw"]
 texture = ExtResource("1_pxcuk")
@@ -32,7 +32,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_x7hsw")
 sources/2 = SubResource("TileSetScenesCollectionSource_ttqr8")
 
-[node name="LevelTemplate" type="Node2D"]
+[node name="LevelTemplate2" type="Node2D"]
 script = ExtResource("1_jyyev")
 
 [node name="Backdrop" type="Sprite2D" parent="."]
