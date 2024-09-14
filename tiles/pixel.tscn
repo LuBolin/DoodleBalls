@@ -18,3 +18,15 @@ region_rect = Rect2(0, 0, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_61i1i")
+
+[node name="Erase" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.8
+direction = Vector2(0, -1)
+gravity = Vector2(0, 200)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+color = Color(0.237539, 0.237539, 0.237539, 0.698039)

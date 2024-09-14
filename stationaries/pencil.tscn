@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cl2p2jum077sl"]
+[gd_scene load_steps=11 format=3 uid="uid://cl2p2jum077sl"]
 
 [ext_resource type="Script" path="res://stationaries/pencil.gd" id="1_lee46"]
 [ext_resource type="Texture2D" uid="uid://hv3dmhrgwfvo" path="res://resources/Pencil.png" id="2_x80l5"]
@@ -119,6 +119,10 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpj0j"]
 radius = 4.0
 
+[sub_resource type="Gradient" id="Gradient_d04bh"]
+offsets = PackedFloat32Array(0, 0.988848)
+colors = PackedColorArray(0, 0, 0, 1, 0.241156, 0.241156, 0.241156, 1)
+
 [node name="Pencil" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_lee46")
@@ -143,3 +147,36 @@ debug_color = Color(0, 0.165806, 0.199517, 0.42)
 [node name="Scribble" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_2y3np")
+
+[node name="ScribbleParticle" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 5
+lifetime = 0.5
+explosiveness = 0.2
+direction = Vector2(0, -1)
+gravity = Vector2(0, 200)
+initial_velocity_min = 40.0
+initial_velocity_max = 100.0
+angular_velocity_min = -60.0
+angular_velocity_max = 60.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_d04bh")
+
+[node name="SlamParticle" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 120.0
+linear_accel_min = -50.0
+linear_accel_max = -50.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color = Color(0.162066, 0.162066, 0.162066, 1)

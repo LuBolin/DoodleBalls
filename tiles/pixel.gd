@@ -26,6 +26,7 @@ func erase():
 	#if state != STATE.BLANK:
 	if state == STATE.GRAY:
 		state = STATE.BLANK
+		%Erase.set_emitting(true)
 
 func _on_body_shape_entered(
 	body_rid: RID, body: Node,
@@ -35,6 +36,7 @@ func _on_body_shape_entered(
 			Global.line_erased.emit()
 		elif state == STATE.BLACK:
 			state = STATE.BLANK # do not propagate
+			%Erase.set_emitting(true)
 	elif body is Pencil:
 		#if body_shape_index == 0:
 			#pass # base collider

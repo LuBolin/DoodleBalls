@@ -107,17 +107,27 @@ func _physics_process(delta: float) -> void:
 		%Animator.play(current_state)
 		if current_state == "doodle":
 			%Scribble.play(0)
+			%ScribbleParticle.set_emitting(true)
 		else:
 			%Scribble.stop()
+			%ScribbleParticle.set_emitting(false)
 		update_state = false
 	if current_state == "doodle":
 		var target_global_pos = get_global_mouse_position()
-		var direction = (target_global_pos - global_position).normalized()
-		velocity = direction * move_speed * delta
+		#var direction = (target_global_pos - global_position).normalized()
+		#velocity = direction * move_speed * delta
+		
+		var offset = target_global_pos - global_position
+		var direction = offset.normalized()
+		var mag = move_speed * delta
+		mag = min(mag, offset.length()*2)
+		velocity = direction * mag
+		
 		move_and_slide()
 
 func _slam():
 	Global.push_back.emit()
+	%SlamParticle.set_emitting(true)
 
 func set_to_idle():
 	current_state = "idle"
