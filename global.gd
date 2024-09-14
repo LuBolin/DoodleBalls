@@ -56,7 +56,6 @@ func _process(delta):
 	dash_cd -= delta
 	slam_cd -= delta
 	if (not total_squares == 0):
-		print(float(squares_shaded) / total_squares," ",WIN_THRESHOLD)
 		if (float(squares_shaded) / total_squares > WIN_THRESHOLD):
 			win_timer -= delta
 		else:
