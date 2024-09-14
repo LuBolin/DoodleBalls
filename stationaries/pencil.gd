@@ -12,6 +12,8 @@ var update_state: bool = false
 
 func _ready() -> void:
 	self.global_position = Vector2.ZERO
+	# %DoodleArea.body_entered.connect(_test)
+	%DoodleArea.body_shape_entered.connect(_test2)
 
 func _input(event: InputEvent) -> void:
 	var new_state: String = 'idle'
@@ -30,3 +32,13 @@ func _physics_process(delta: float) -> void:
 		%Animator.advance(0)
 		%Animator.play(current_state)
 		update_state = false
+	self.global_position = get_global_mouse_position()
+
+func _test(body: Node2D):
+	print(body)
+
+func _test2(
+	body_rid: RID, body: Node2D,
+	body_shape_index: int, local_shape_index: int):
+		print(body_rid," ",body)
+		print(local_shape_index," ",body_shape_index)

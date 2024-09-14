@@ -1,0 +1,1 @@
+class_name PencilFill extends StaticBody2D

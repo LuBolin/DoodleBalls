@@ -1,7 +1,12 @@
-[gd_scene format=3 uid="uid://damitogg7bx3r"]
+[gd_scene load_steps=2 format=3 uid="uid://damitogg7bx3r"]
+
+[ext_resource type="TileSet" uid="uid://duqwgedyvm8u5" path="res://temp.tres" id="1_0ogwe"]
 
 [node name="Root" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TilemapLayers" type="Node2D" parent="."]
+
+[node name="PixelLayer" type="TileMapLayer" parent="TilemapLayers"]
+tile_set = ExtResource("1_0ogwe")

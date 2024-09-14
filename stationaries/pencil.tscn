@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cl2p2jum077sl"]
+[gd_scene load_steps=12 format=3 uid="uid://cl2p2jum077sl"]
 
 [ext_resource type="Script" path="res://stationaries/pencil.gd" id="1_lee46"]
 [ext_resource type="Texture2D" uid="uid://df7l88urortkw" path="res://stationaries/pencil.png" id="2_mlrso"]
 [ext_resource type="PackedScene" uid="uid://cgxkdshymj7lg" path="res://stationaries/round_eraser.tscn" id="3_ryxp1"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_f8ytb"]
+[ext_resource type="Script" path="res://stationaries/tip.gd" id="4_mauto"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pf21m"]
 radius = 24.0
@@ -153,12 +152,12 @@ _data = {
 "tilt": SubResource("Animation_laecf")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cpj0j"]
+radius = 8.0
+
 [node name="Pencil" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_lee46")
-
-[node name="TipCollider" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_f8ytb")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -54)
@@ -183,3 +182,17 @@ position = Vector2(110, 39)
 
 [node name="RoundEraser2" parent="." instance=ExtResource("3_ryxp1")]
 position = Vector2(-180, 13)
+
+[node name="DoodleArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Collider" type="CollisionShape2D" parent="DoodleArea"]
+shape = SubResource("CircleShape2D_cpj0j")
+
+[node name="Tip" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_mauto")
+
+[node name="Collider" type="CollisionShape2D" parent="Tip"]
+shape = SubResource("CircleShape2D_cpj0j")
