@@ -7,11 +7,27 @@
 
 [node name="LevelTemplate" instance=ExtResource("1_td0t7")]
 
-[node name="Background" type="Sprite2D" parent="." index="0"]
-scale = Vector2(0.8, 0.8)
+[node name="Background" type="Sprite2D" parent="." index="1"]
+position = Vector2(0, -28)
+scale = Vector2(0.65, 0.65)
 texture = ExtResource("2_3hbcl")
+
+[node name="CollisionShape2D" parent="Boundaries/StaticBody2D" index="0"]
+position = Vector2(0, 240)
+
+[node name="CollisionShape2D2" parent="Boundaries/StaticBody2D" index="1"]
+position = Vector2(0, -315)
+
+[node name="CollisionShape2D3" parent="Boundaries/StaticBody2D" index="2"]
+position = Vector2(-492, 0)
+
+[node name="CollisionShape2D4" parent="Boundaries/StaticBody2D" index="3"]
+position = Vector2(530.5, 0)
 
 [node name="Pencil" parent="." index="4" instance=ExtResource("2_jrwjs")]
 
 [node name="RectEraser" parent="." index="5" instance=ExtResource("3_ibmhh")]
 position = Vector2(-255, -96)
+
+[node name="TilemapLayers" parent="." index="6"]
+visible = false
