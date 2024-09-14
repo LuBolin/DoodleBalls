@@ -34,16 +34,6 @@ func simplify_polygon(points: PackedVector2Array,
 			simplified_points.append(points[i])
 	return simplified_points
 
-#func consolidate():
-	#if trail_buffer.is_empty():
-		#return
-	#var total: Vector2 = Vector2.ZERO
-	#for vec2 in trail_buffer:
-		#total += vec2
-	#total /= trail_buffer.size()
-	#trail.append(total)
-	#trail_buffer.clear()
-
 func consolidate():
 	if trail_buffer.is_empty():
 		return
@@ -59,8 +49,18 @@ func consolidate():
 	trail.append(closest_point)
 	
 	trail_buffer.clear()
+	
+	#var pix_layer = Global.pixel_layer
+	#var self_in_pix_coords = pix_layer.local_to_map(
+		#pix_layer.to_local(self.global_position))
+	#var pen_in_pix_coords = pix_layer.local_to_map(
+		#pix_layer.to_local(closest_point))
+	#if self_in_pix_coords == pen_in_pix_coords:
+		#Global.enclosed.emit(closest_point)
 
 func _enclosed(closure_point: Vector2):
+	if len(trail) < 3:
+		return
 	var vertices = trail.duplicate()
 	var closure_index = vertices.find(closure_point)
 	if closure_index == -1:

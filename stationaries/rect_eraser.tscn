@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctk5s5yjasx0u"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://bnk4t2g6rbh7m" path="res://stationaries/full_elasticity.tres" id="1_b3mm1"]
+[ext_resource type="Texture2D" uid="uid://do4dabux8l4ms" path="res://resources/Eraser.png" id="2_ua41x"]
+[ext_resource type="Script" path="res://stationaries/eraser.gd" id="2_xjjna"]
+
+[node name="RectEraser" type="RigidBody2D"]
+physics_material_override = ExtResource("1_b3mm1")
+gravity_scale = 0.0
+script = ExtResource("2_xjjna")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+polygon = PackedVector2Array(-41, 49, -50, -1, -6, -48, 23, -51, 42, -50, 50, -40, 50, -2, 43, 51, -41, 49)
+
+[node name="SpriteWrapper" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Sprite" type="Sprite2D" parent="SpriteWrapper"]
+unique_name_in_owner = true
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_ua41x")

@@ -36,12 +36,16 @@ func _on_body_shape_entered(
 		elif state == STATE.BLACK:
 			state = STATE.BLANK # do not propagate
 	elif body is Pencil:
+		#if body_shape_index == 0:
+			#pass # base collider
+		#else: # tip collider
 		if body_shape_index == 0:
-			pass # base collider
-		else: # tip collider
 			if state == STATE.BLANK:
 				state = STATE.GRAY
 				# Global.pencil.trail.append(self.global_position)
+				Global.pencil.add_point_to_line(self.global_position)
+				Global.pencil.call_deferred("consolidate")
+			if state == STATE.BLACK:
 				Global.pencil.add_point_to_line(self.global_position)
 				Global.pencil.call_deferred("consolidate")
 			elif state == STATE.GRAY:

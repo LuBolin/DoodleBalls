@@ -1,16 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6rpu1mwy38dw"]
 
 [ext_resource type="Script" path="res://tiles/pixel.gd" id="1_grhbs"]
-[ext_resource type="Texture2D" uid="uid://c3f375rsfvv3g" path="res://plain_tilesheet.png" id="2_kei5x"]
+[ext_resource type="Texture2D" uid="uid://c3f375rsfvv3g" path="res://resources/plain_tilesheet.png" id="2_kei5x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61i1i"]
-size = Vector2(16, 16)
+size = Vector2(8, 8)
 
 [node name="Pixel" type="Area2D"]
 script = ExtResource("1_grhbs")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_kei5x")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
