@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://6ppns521hfaq"]
+
+[ext_resource type="Texture2D" uid="uid://hv3dmhrgwfvo" path="res://resources/Pencil.png" id="1_dwxv3"]
+[ext_resource type="Texture2D" uid="uid://d0lwv1p0ovrbo" path="res://resources/red_tick.png" id="2_j38lb"]
+
+[node name="LevelButton" type="Button"]
+custom_minimum_size = Vector2(80, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -26.0
+offset_right = 40.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "1"
+icon = ExtResource("1_dwxv3")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Cleared" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -29.5
+offset_top = -31.5
+offset_right = 34.5
+offset_bottom = 32.5
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_j38lb")

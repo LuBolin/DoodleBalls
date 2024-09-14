@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df7l88urortkw"
-path="res://.godot/imported/pencil.png-670920da4375b37a123f1f1961b46030.ctex"
+uid="uid://daedo42msc6y0"
+path="res://.godot/imported/backdrop.png-09ba459d8663ab42b2dc128e4c283d48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stationaries/pencil.png"
-dest_files=["res://.godot/imported/pencil.png-670920da4375b37a123f1f1961b46030.ctex"]
+source_file="res://resources/backdrop.png"
+dest_files=["res://.godot/imported/backdrop.png-09ba459d8663ab42b2dc128e4c283d48.ctex"]
 
 [params]
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cl2p2jum077sl"]
+[gd_scene load_steps=10 format=3 uid="uid://cl2p2jum077sl"]
 
 [ext_resource type="Script" path="res://stationaries/pencil.gd" id="1_lee46"]
 [ext_resource type="Texture2D" uid="uid://hv3dmhrgwfvo" path="res://resources/Pencil.png" id="2_x80l5"]
+[ext_resource type="AudioStream" uid="uid://b4wcvnfhuttak" path="res://resources/scribble.mp3" id="3_2y3np"]
 
 [sub_resource type="Animation" id="Animation_pdb2p"]
 length = 0.001
@@ -28,6 +29,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -82)]
 }
 
 [sub_resource type="Animation" id="Animation_naar2"]
@@ -63,11 +76,44 @@ tracks/1/keys = {
 resource_name = "idle"
 loop_mode = 1
 
+[sub_resource type="Animation" id="Animation_4udph"]
+resource_name = "slam"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -82), Vector2(0, -102), Vector2(0, -102), Vector2(0, -82)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.666667, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_slam"
+}, {
+"args": [],
+"method": &"set_to_idle"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qvxh1"]
 _data = {
 "RESET": SubResource("Animation_pdb2p"),
 "doodle": SubResource("Animation_naar2"),
-"idle": SubResource("Animation_3jm3v")
+"idle": SubResource("Animation_3jm3v"),
+"slam": SubResource("Animation_4udph")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpj0j"]
@@ -93,3 +139,7 @@ autoplay = "idle"
 shape = SubResource("CircleShape2D_cpj0j")
 disabled = true
 debug_color = Color(0, 0.165806, 0.199517, 0.42)
+
+[node name="Scribble" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_2y3np")
