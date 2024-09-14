@@ -1,3 +1,7 @@
 [gd_scene format=3 uid="uid://damitogg7bx3r"]
 
 [node name="Root" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
