@@ -1,1 +1,0 @@
-class_name PencilTip extends StaticBody2D
