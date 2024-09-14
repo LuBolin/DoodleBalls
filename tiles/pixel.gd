@@ -20,6 +20,7 @@ func _ready() -> void:
 	body_shape_entered.connect(_on_body_shape_entered)
 	area_entered.connect(_on_area_entered)
 	Global.line_erased.connect(erase)
+	Global.total_squares += 1
 
 # only via gray propagation
 func erase():
@@ -36,6 +37,7 @@ func _on_body_shape_entered(
 			Global.line_erased.emit()
 		elif state == STATE.BLACK:
 			state = STATE.BLANK # do not propagate
+			Global.squares_shaded -= 1
 			%Erase.set_emitting(true)
 	elif body is Pencil:
 		#if body_shape_index == 0:
@@ -66,3 +68,5 @@ func _on_body_shape_entered(
 func _on_area_entered(area: Area2D):
 	if area.name == "PencilFill":
 		state = STATE.BLACK
+		Global.squares_shaded += 1
+		#area.call_deferred("queue_free")

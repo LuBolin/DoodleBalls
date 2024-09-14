@@ -1,10 +1,15 @@
-[gd_scene load_steps=11 format=4 uid="uid://damitogg7bx3r"]
+[gd_scene load_steps=12 format=4 uid="uid://damitogg7bx3r"]
 
 [ext_resource type="Texture2D" uid="uid://c3f375rsfvv3g" path="res://resources/plain_tilesheet.png" id="1_ppdmv"]
 [ext_resource type="PackedScene" uid="uid://b6rpu1mwy38dw" path="res://tiles/pixel.tscn" id="2_vd2g0"]
 [ext_resource type="PackedScene" uid="uid://cl2p2jum077sl" path="res://stationaries/pencil.tscn" id="2_x6kqw"]
 [ext_resource type="Script" path="res://pixel_layer.gd" id="3_gxxfq"]
+<<<<<<< HEAD
+[ext_resource type="PackedScene" uid="uid://cq2pat7mywope" path="res://game_overlay.tscn" id="6_5c7q7"]
+[ext_resource type="PackedScene" path="res://stationaries/rect_eraser.tscn" id="6_5u5ji"]
+=======
 [ext_resource type="PackedScene" uid="uid://cjmli331lkdll" path="res://stationaries/rect_eraser.tscn" id="6_5u5ji"]
+>>>>>>> 493a367d51dc73c63e7dc6ffe931e63bb2d9b844
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mb0ov"]
 size = Vector2(1152, 8)
@@ -32,7 +37,10 @@ sources/2 = SubResource("TileSetScenesCollectionSource_u07lw")
 
 [node name="Root" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="GameOverlay" parent="." instance=ExtResource("6_5c7q7")]
+offset = Vector2(-435.665, 208.37)
+scale = Vector2(0.57, 0.57)
+transform = Transform2D(0.57, 0, 0, 0.57, -435.665, 208.37)
 
 [node name="Boundaries" type="Node2D" parent="."]
 
@@ -67,5 +75,6 @@ position = Vector2(-195, -33)
 [node name="RectEraser2" parent="." instance=ExtResource("6_5u5ji")]
 position = Vector2(286, 100)
 
+[node name="Camera2D" type="Camera2D" parent="."]
 [node name="Pencil" parent="." instance=ExtResource("2_x6kqw")]
 position = Vector2(8, 19)
