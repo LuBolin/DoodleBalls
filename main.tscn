@@ -68,7 +68,3 @@ position = Vector2(-480, -284)
 
 [node name="RoundEraser2" parent="." instance=ExtResource("4_yeq3g")]
 position = Vector2(-316, 182)
-
-[node name="Line" type="Line2D" parent="."]
-unique_name_in_owner = true
-top_level = true

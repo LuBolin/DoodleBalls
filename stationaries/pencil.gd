@@ -11,7 +11,8 @@ var current_state: String
 var update_state: bool = false
 
 var trail: PackedVector2Array = PackedVector2Array()
-var trail_buffer: PackedVector2Array = PackedVector2Array()
+var trail_buffer = []
+
 func _ready() -> void:
 	self.global_position = Vector2.ZERO
 	assert(Global.pencil == null)
@@ -22,7 +23,7 @@ func _ready() -> void:
 
 func _erased():
 	trail.clear()
-	%Line.clear_points()
+	trail_buffer.clear()
 
 func simplify_polygon(points: PackedVector2Array, 
 	threshold: float = 0.1) -> PackedVector2Array:
@@ -33,21 +34,53 @@ func simplify_polygon(points: PackedVector2Array,
 			simplified_points.append(points[i])
 	return simplified_points
 
+#func consolidate():
+	#if trail_buffer.is_empty():
+		#return
+	#var total: Vector2 = Vector2.ZERO
+	#for vec2 in trail_buffer:
+		#total += vec2
+	#total /= trail_buffer.size()
+	#trail.append(total)
+	#trail_buffer.clear()
 
-func _enclosed():
+func consolidate():
+	if trail_buffer.is_empty():
+		return
+	var target_pos = self.global_position
+	var closest_point = trail_buffer[0]
+	var min_distance = target_pos.distance_to(closest_point)
+	
+	for vec2 in trail_buffer:
+		var distance = target_pos.distance_to(vec2)
+		if distance < min_distance:
+			min_distance = distance
+			closest_point = vec2
+	trail.append(closest_point)
+	
+	trail_buffer.clear()
+
+func _enclosed(closure_point: Vector2):
 	var vertices = trail.duplicate()
+	var closure_index = vertices.find(closure_point)
+	if closure_index == -1:
+		return
+	vertices = vertices.slice(closure_index)
 	trail.clear()
 	Global.line_erased.emit()
-	
 	vertices = simplify_polygon(vertices)
-	print(vertices)
-	var static_body = StaticBody2D.new()
+	var area = Area2D.new()
 	var collision_polygon = CollisionPolygon2D.new()
 	collision_polygon.polygon = vertices
-	static_body.add_child(collision_polygon)
-	get_tree().root.call_deferred("add_child", static_body)
-	get_tree().create_timer(0.1).timeout.connect(
-		static_body.queue_free)
+	area.add_child(collision_polygon)
+	area.collision_layer = 1
+	area.collision_mask = 1
+	area.name = "PencilFill"
+	get_tree().root.call_deferred("add_child", area)
+	get_tree().create_timer(1).timeout.connect(
+		area.queue_free
+	)
+
 
 func _input(event: InputEvent) -> void:
 	var new_state: String = 'idle'
@@ -63,7 +96,7 @@ func _input(event: InputEvent) -> void:
 		update_state = true
 
 func add_point_to_line(position: Vector2):
-	%Line.add_point(position)
+	trail_buffer.append(position)
 
 func _physics_process(delta: float) -> void:
 	if update_state:

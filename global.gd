@@ -1,7 +1,7 @@
 extends Node
 
 signal line_erased
-signal enclosed
+signal enclosed(value: Vector2)
 
 var pencil: Pencil = null
 var pixel_layer: PixelLayer = null
